@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Eliza Zadura – Software Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Full-stack developer working with Java, Spring, React, and AI-assisted workflows."
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar">
+      <div class="avatar">
+        <!-- Optional: replace src with your own image path -->
+        <img src="avatar.jpg" alt="Eliza Zadura" />
+      </div>
+
+      <h1 class="name">Eliza Zadura</h1>
+      <p class="tagline">
+        Full-stack developer · Java / Spring · React · AI-assisted workflows
+      </p>
+
+      <ul class="meta">
+        <li>Greater Malmö area, Sweden</li>
+      </ul>
+
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#experiments">Experiments</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="links">
+        <!-- Replace with your actual links -->
+        <a href="https://github.com/ElizaZadura" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/elizazadura" target="_blank">LinkedIn</a>
+        <a href="Eliza_Zadura_CV.pdf" target="_blank">Download CV (PDF)</a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <section id="about">
+        <h2>About</h2>
+        <p>
+          I’m a software developer with a focus on backend-heavy full-stack work in
+          Java and Spring, plus modern frontend stacks. Lately I’ve been building
+          tools that blend traditional web development with AI-assisted workflows:
+          CV tailoring, code exploration, and model-behavior experiments.
+        </p>
+        <p>
+          I like clear systems, tight feedback loops, and code that’s easy to reason
+          about six months later.
+        </p>
+      </section>
+
+      <section id="projects">
+        <h2>Selected projects</h2>
+
+        <article class="project">
+          <h3>Mat-och-sovklocka (MoS)</h3>
+          <p class="proj-meta">Spring Boot · Postgres · Docker · JWT · TypeScript/React</p>
+          <p>
+            A full-stack application for tracking routines and reminders. Includes a
+            modular Spring Boot backend with Flyway migrations, JWT-based auth,
+            role-based access control, and a Dockerized Postgres setup. Frontend
+            built with React and TypeScript.
+          </p>
+          <ul class="proj-links">
+            <li><a href="https://github.com/Mat-och-sovklocka/mos" target="_blank">Source</a></li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <h3>Gemini CV &amp; Conversation Assistant</h3>
+          <p class="proj-meta">React · TypeScript · Gemini API · Supabase</p>
+          <p>
+            A web app that helps tailor a CV and cover letter to specific job
+            postings. Supports a “master profile” of experience, structured job
+            application records in Supabase, and iterative editing of AI-generated
+            drafts instead of one-shot prompts.
+          </p>
+          <ul class="proj-links">
+            <li><a href="https://github.com/ElizaZadura/match-the-job" target="_blank">Source</a></li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <h3>Local LLM probe framework</h3>
+          <p class="proj-meta">Shell · Ollama · logging / analysis</p>
+          <p>
+            A small framework for running repeatable “probe” prompts against local
+            LLMs (Qwen, LLaMA, Phi, Mistral) and logging outputs as fossils for later
+            analysis. Focus on sampling behavior, drift, and response texture under
+            different scaffolds and anchors.
+          </p>
+          <ul class="proj-links">
+            <li><a href="https://github.com/ElizaZadura/llm-probes" target="_blank">Source (placeholder)</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="experience">
+        <h2>Experience</h2>
+
+        <article class="exp">
+          <h3>Full-stack Java Developer</h3>
+          <p class="exp-meta">Freelance / project-based · 2023–now</p>
+          <ul>
+            <li>Backend work in Java/Spring Boot with REST APIs, security, and persistence.</li>
+            <li>Frontend work in React / TypeScript for internal tools and dashboards.</li>
+            <li>Introduced AI-assisted coding practices into personal and small-team workflows.</li>
+          </ul>
+        </article>
+
+        <article class="exp">
+          <h3>Earlier roles</h3>
+          <p class="exp-meta">Software development &amp; tech-adjacent work</p>
+          <p>
+            Details available in my CV. Highlights include hands-on coding, system
+            ownership, and cross-functional collaboration with product and data
+            teams.
+          </p>
+        </article>
+      </section>
+
+      <section id="experiments">
+        <h2>Experiments</h2>
+        <p>
+          I keep a steady stream of side experiments around AI-assisted development:
+          prompt scaffolds for local models, evaluation of “assistant modes”,
+          logging pipelines, and tooling glue (scripts, MCP integrations, Supabase
+          backing stores).
+        </p>
+        <p>
+          These don’t always become polished projects, but they strongly influence
+          how I write and structure production code.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          Best ways to reach me:
+        </p>
+        <ul>
+          <li>Email: <a href="mailto:eliza.zadura@gmail.com">eliza.zadura@gmail.com</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/elizazadura" target="_blank">/in/elizazadura</a></li>
+          <li>GitHub: <a href="https://github.com/ElizaZadura" target="_blank">@ElizaZadura</a></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Eliza Zadura</p>
+  </footer>
+
+  <script>
+    // Tiny helper to keep the year current
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
