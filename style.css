@@ -1,17 +1,67 @@
-/* Base */
+/* ============================================
+   THEME VARIABLES
+   ============================================ */
 
-:root {
+/* PRO Theme (Dark with orange accents - Don Ho style) */
+[data-theme="pro"] {
   --bg: #0b0c10;
   --bg-alt: #11131a;
-  --fg: #f5f5f5;
-  --muted: #9ca3af;
+  --sidebar-bg: #0a0a0a;
+  --content-bg: #fafafa;
+  --fg: #1a1a1a;
+  --fg-light: #f5f5f5;
+  --muted: #666;
   --accent: #e8743b;
-  --border: #262b35;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Segoe UI", sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --accent-hover: #f78c46;
+  --border: #ddd;
+  --sidebar-border: #262b35;
+  --section-heading: #e8743b;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --font-heading: 'Source Sans 3', system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
+
+/* DINKY Theme (Light with red sidebar) */
+[data-theme="dinky"] {
+  --bg: #f5f2e9;
+  --bg-alt: #ebe8df;
+  --sidebar-bg: #6d0019;
+  --content-bg: #fafaf7;
+  --fg: #333;
+  --fg-light: #fff;
+  --muted: #666;
+  --accent: #c00;
+  --accent-hover: #e00;
+  --border: #d5cfbf;
+  --sidebar-border: #5a0015;
+  --section-heading: #333;
+  --font-body: 'Merriweather', Georgia, serif;
+  --font-heading: 'Merriweather', Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* HACKER Theme (Terminal green on black) */
+[data-theme="hacker"] {
+  --bg: #151515;
+  --bg-alt: #1a1a1a;
+  --sidebar-bg: #0d0d0d;
+  --content-bg: #1a1a1a;
+  --fg: #b5e853;
+  --fg-light: #b5e853;
+  --muted: #6a9e3d;
+  --accent: #b5e853;
+  --accent-hover: #d4ff6f;
+  --border: #333;
+  --sidebar-border: #333;
+  --section-heading: #b5e853;
+  --font-body: 'Anonymous Pro', monospace;
+  --font-heading: 'Anonymous Pro', monospace;
+  --font-mono: 'Anonymous Pro', monospace;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
 
 *,
 *::before,
@@ -23,53 +73,121 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
-  background: radial-gradient(circle at top left, #111827 0, #020617 55%);
+  background-color: var(--bg);
   color: var(--fg);
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Layout */
+/* ============================================
+   THEME SWITCHER
+   ============================================ */
+
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.theme-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--fg-light);
+  opacity: 0.7;
+}
+
+.theme-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.theme-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  background: transparent;
+}
+
+.theme-btn:hover {
+  transform: scale(1.1);
+}
+
+.theme-btn.active {
+  border-color: var(--accent);
+}
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.dinky-icon {
+  background: linear-gradient(135deg, #6d0019 50%, #f5f2e9 50%);
+}
+
+.hacker-icon {
+  background: linear-gradient(135deg, #151515 50%, #b5e853 50%);
+}
+
+.pro-icon {
+  background: linear-gradient(135deg, #0a0a0a 50%, #e8743b 50%);
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
 
 .page {
   max-width: 1100px;
-  margin: 32px auto;
-  padding: 0 16px;
+  margin: 0 auto;
+  padding: 32px 16px;
   display: grid;
-  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
-  gap: 32px;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 0;
 }
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
 
 .sidebar {
-  background-color: rgba(11, 15, 25, 0.9);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px 18px 24px;
+  background-color: var(--sidebar-bg);
+  padding: 24px 20px;
   position: sticky;
-  top: 24px;
+  top: 0;
   align-self: flex-start;
+  height: fit-content;
+  max-height: 100vh;
+  overflow-y: auto;
+  transition: background-color 0.3s ease;
 }
-
-.content {
-  background-color: rgba(13, 16, 26, 0.9);
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  padding: 24px 24px 32px;
-}
-
-/* Sidebar */
 
 .avatar {
-  width: 96px;
-  height: 96px;
-  border-radius: 999px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--accent);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  border: 3px solid var(--accent);
 }
 
 .avatar img {
@@ -79,118 +197,165 @@ body {
 }
 
 .name {
-  margin: 0 0 4px;
-  font-size: 1.6rem;
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--fg-light);
 }
 
 .tagline {
-  margin: 0 0 12px;
-  font-size: 0.95rem;
-  color: var(--muted);
+  margin: 0 0 16px;
+  font-size: 0.9rem;
+  color: var(--fg-light);
+  opacity: 0.8;
+  line-height: 1.4;
 }
 
 .meta {
   list-style: none;
   padding: 0;
-  margin: 0 0 16px;
-  font-size: 0.9rem;
-  color: var(--muted);
+  margin: 0 0 20px;
+  font-size: 0.85rem;
+  color: var(--fg-light);
+  opacity: 0.7;
 }
 
 .nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 18px;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
 }
 
 .nav a {
   font-size: 0.85rem;
   text-decoration: none;
-  color: var(--fg);
-  border-radius: 999px;
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  background-color: rgba(24, 32, 48, 0.8);
+  color: var(--fg-light);
+  padding: 6px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.15s ease;
 }
 
 .nav a:hover {
-  border-color: var(--accent);
   color: var(--accent);
 }
 
 .links {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-top: 8px;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--sidebar-border);
 }
 
 .links a {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--accent);
   text-decoration: none;
+  transition: color 0.15s ease;
 }
 
 .links a:hover {
+  color: var(--accent-hover);
   text-decoration: underline;
 }
 
-/* Content */
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.content {
+  background-color: var(--content-bg);
+  padding: 40px 48px;
+  transition: background-color 0.3s ease;
+}
 
 h2 {
-  margin-top: 0;
-  margin-bottom: 8px;
-  font-size: 1.3rem;
+  margin: 0 0 16px;
+  font-size: 1.4rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--section-heading);
 }
 
 section {
-  margin-bottom: 28px;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 section p {
-  line-height: 1.5;
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
+
+section ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+section li {
+  margin-bottom: 6px;
+}
+
+/* ============================================
+   PROJECTS & EXPERIENCE
+   ============================================ */
 
 .project,
 .exp {
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid #202634;
+  margin-top: 24px;
 }
 
 .project:first-of-type,
 .exp:first-of-type {
-  border-top: none;
-  padding-top: 0;
+  margin-top: 0;
 }
 
 .project h3,
 .exp h3 {
-  margin: 0 0 4px;
-  font-size: 1.05rem;
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
 }
 
 .proj-meta,
 .exp-meta {
-  margin: 0 0 6px;
+  margin: 0 0 10px;
   font-size: 0.85rem;
   color: var(--muted);
   font-family: var(--font-mono);
 }
 
-.proj-links,
-.exp ul {
-  margin: 0 0 8px;
-  padding-left: 18px;
+/* Date badges for Pro theme */
+.date-badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  margin-right: 4px;
+}
+
+.date-badge.now {
+  background: var(--accent);
 }
 
 .proj-links {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
+  margin: 8px 0 0;
   display: flex;
-  gap: 10px;
+  gap: 16px;
 }
 
 .proj-links a {
@@ -203,31 +368,148 @@ section p {
   text-decoration: underline;
 }
 
+/* ============================================
+   LINKS
+   ============================================ */
+
 a {
   color: var(--accent);
+  transition: color 0.15s ease;
 }
 
 a:hover {
-  color: #f78c46;
+  color: var(--accent-hover);
 }
 
-/* Footer */
+/* ============================================
+   FOOTER
+   ============================================ */
 
 .footer {
   text-align: center;
   color: var(--muted);
   font-size: 0.8rem;
-  margin-bottom: 24px;
+  padding: 24px 16px;
 }
 
-/* Mobile */
+/* ============================================
+   THEME-SPECIFIC OVERRIDES
+   ============================================ */
+
+/* DINKY Theme Specifics */
+[data-theme="dinky"] .page {
+  background: var(--bg);
+}
+
+[data-theme="dinky"] .sidebar {
+  border-radius: 0;
+}
+
+[data-theme="dinky"] .content {
+  border-left: 4px solid #c00;
+}
+
+[data-theme="dinky"] .nav a {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
+[data-theme="dinky"] h2 {
+  border-bottom: 2px solid #c00;
+  padding-bottom: 8px;
+}
+
+/* HACKER Theme Specifics */
+[data-theme="hacker"] .page {
+  background: var(--bg);
+  border: 1px dashed #333;
+  margin: 32px auto;
+}
+
+[data-theme="hacker"] .sidebar {
+  border-right: 1px dashed #333;
+}
+
+[data-theme="hacker"] .name::before {
+  content: "./ ";
+  opacity: 0.5;
+}
+
+[data-theme="hacker"] h2::before {
+  content: "## ";
+  opacity: 0.5;
+}
+
+[data-theme="hacker"] .project h3::before,
+[data-theme="hacker"] .exp h3::before {
+  content: "> ";
+  opacity: 0.5;
+}
+
+[data-theme="hacker"] .content {
+  background: var(--content-bg);
+}
+
+[data-theme="hacker"] section {
+  border-bottom-style: dashed;
+}
+
+[data-theme="hacker"] .date-badge {
+  background: #333;
+  border: 1px solid #b5e853;
+}
+
+[data-theme="hacker"] .date-badge.now {
+  background: transparent;
+  border-color: #b5e853;
+}
+
+/* PRO Theme Specifics */
+[data-theme="pro"] .page {
+  background: transparent;
+}
+
+[data-theme="pro"] .sidebar {
+  background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+}
+
+[data-theme="pro"] h2 {
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+
+[data-theme="pro"] section {
+  border-bottom: 1px solid #eee;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 
 @media (max-width: 800px) {
   .page {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .sidebar {
     position: static;
+    max-height: none;
+    padding: 20px;
+  }
+
+  .content {
+    padding: 24px 20px;
+  }
+
+  [data-theme="dinky"] .content {
+    border-left: none;
+    border-top: 4px solid #c00;
+  }
+
+  [data-theme="hacker"] .sidebar {
+    border-right: none;
+    border-bottom: 1px dashed #333;
   }
 }

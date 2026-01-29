@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="pro">
 <head>
   <meta charset="UTF-8" />
   <title>Eliza Zadura – Software Developer</title>
@@ -8,21 +8,30 @@
     name="description"
     content="Full-stack developer working with Java, Spring, React, and AI-assisted workflows."
   />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="page">
     <aside class="sidebar">
-            <div class="theme-switcher">
-        <label for="theme-select">Theme</label>
-        <select id="theme-select">
-          <option value="clean">Clean</option>
-          <option value="hacker">Hacker</option>
-        </select>
+      <div class="theme-switcher">
+        <span class="theme-label">Theme</span>
+        <div class="theme-buttons">
+          <button class="theme-btn" data-theme="dinky" title="Dinky - Light">
+            <span class="theme-icon dinky-icon"></span>
+          </button>
+          <button class="theme-btn" data-theme="hacker" title="Hacker - Terminal">
+            <span class="theme-icon hacker-icon"></span>
+          </button>
+          <button class="theme-btn active" data-theme="pro" title="Pro - Dark">
+            <span class="theme-icon pro-icon"></span>
+          </button>
+        </div>
       </div>
 
       <div class="avatar">
-        <!-- Optional: replace src with your own image path -->
         <img src="avatar.jpg" alt="Eliza Zadura" />
       </div>
 
@@ -44,7 +53,6 @@
       </nav>
 
       <div class="links">
-        <!-- Replace with your actual links -->
         <a href="https://github.com/ElizaZadura" target="_blank">GitHub</a>
         <a href="https://www.linkedin.com/in/elizazadura" target="_blank">LinkedIn</a>
         <a href="Eliza_Zadura_CV.pdf" target="_blank">Download CV (PDF)</a>
@@ -55,13 +63,13 @@
       <section id="about">
         <h2>About</h2>
         <p>
-          I’m a software developer with a focus on backend-heavy full-stack work in
-          Java and Spring, plus modern frontend stacks. Lately I’ve been building
+          I'm a software developer with a focus on backend-heavy full-stack work in
+          Java and Spring, plus modern frontend stacks. Lately I've been building
           tools that blend traditional web development with AI-assisted workflows:
           CV tailoring, code exploration, and model-behavior experiments.
         </p>
         <p>
-          I like clear systems, tight feedback loops, and code that’s easy to reason
+          I like clear systems, tight feedback loops, and code that's easy to reason
           about six months later.
         </p>
       </section>
@@ -88,7 +96,7 @@
           <p class="proj-meta">React · TypeScript · Gemini API · Supabase</p>
           <p>
             A web app that helps tailor a CV and cover letter to specific job
-            postings. Supports a “master profile” of experience, structured job
+            postings. Supports a "master profile" of experience, structured job
             application records in Supabase, and iterative editing of AI-generated
             drafts instead of one-shot prompts.
           </p>
@@ -101,7 +109,7 @@
           <h3>Local LLM probe framework</h3>
           <p class="proj-meta">Shell · Ollama · logging / analysis</p>
           <p>
-            A small framework for running repeatable “probe” prompts against local
+            A small framework for running repeatable "probe" prompts against local
             LLMs (Qwen, LLaMA, Phi, Mistral) and logging outputs as fossils for later
             analysis. Focus on sampling behavior, drift, and response texture under
             different scaffolds and anchors.
@@ -117,7 +125,11 @@
 
         <article class="exp">
           <h3>Full-stack Java Developer</h3>
-          <p class="exp-meta">Freelance / project-based · 2023–now</p>
+          <p class="exp-meta">
+            <span class="date-badge">2023</span>
+            <span class="date-badge now">now</span>
+            Freelance / project-based
+          </p>
           <ul>
             <li>Backend work in Java/Spring Boot with REST APIs, security, and persistence.</li>
             <li>Frontend work in React / TypeScript for internal tools and dashboards.</li>
@@ -140,12 +152,12 @@
         <h2>Experiments</h2>
         <p>
           I keep a steady stream of side experiments around AI-assisted development:
-          prompt scaffolds for local models, evaluation of “assistant modes”,
+          prompt scaffolds for local models, evaluation of "assistant modes",
           logging pipelines, and tooling glue (scripts, MCP integrations, Supabase
           backing stores).
         </p>
         <p>
-          These don’t always become polished projects, but they strongly influence
+          These don't always become polished projects, but they strongly influence
           how I write and structure production code.
         </p>
       </section>
@@ -169,8 +181,29 @@
   </footer>
 
   <script>
-    // Tiny helper to keep the year current
+    // Year helper
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Theme switcher
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    const html = document.documentElement;
+    
+    // Load saved theme or default to 'pro'
+    const savedTheme = localStorage.getItem('theme') || 'pro';
+    html.setAttribute('data-theme', savedTheme);
+    document.querySelector(`[data-theme="${savedTheme}"]`)?.classList.add('active');
+    
+    themeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.dataset.theme;
+        html.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        
+        // Update active state
+        themeButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
