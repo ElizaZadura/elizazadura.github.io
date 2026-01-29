@@ -31,10 +31,6 @@
         </div>
       </div>
 
-      <div class="avatar">
-        <img src="avatar.jpg" alt="Eliza Zadura" />
-      </div>
-
       <h1 class="name">Eliza Zadura</h1>
       <p class="tagline">
         Full-stack developer · Java / Spring · React · AI-assisted workflows
@@ -48,14 +44,15 @@
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
         <a href="#experiments">Experiments</a>
         <a href="#contact">Contact</a>
       </nav>
 
       <div class="links">
-        <a href="https://github.com/ElizaZadura" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/elizazadura" target="_blank">LinkedIn</a>
-        <a href="Eliza_Zadura_CV.pdf" target="_blank">Download CV (PDF)</a>
+        <a href="https://github.com/ElizaZadura" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/elizazadura" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </aside>
 
@@ -76,48 +73,7 @@
 
       <section id="projects">
         <h2>Selected projects</h2>
-
-        <article class="project">
-          <h3>Mat-och-sovklocka (MoS)</h3>
-          <p class="proj-meta">Spring Boot · Postgres · Docker · JWT · TypeScript/React</p>
-          <p>
-            A full-stack application for tracking routines and reminders. Includes a
-            modular Spring Boot backend with Flyway migrations, JWT-based auth,
-            role-based access control, and a Dockerized Postgres setup. Frontend
-            built with React and TypeScript.
-          </p>
-          <ul class="proj-links">
-            <li><a href="https://github.com/Mat-och-sovklocka/mos" target="_blank">Source</a></li>
-          </ul>
-        </article>
-
-        <article class="project">
-          <h3>Gemini CV &amp; Conversation Assistant</h3>
-          <p class="proj-meta">React · TypeScript · Gemini API · Supabase</p>
-          <p>
-            A web app that helps tailor a CV and cover letter to specific job
-            postings. Supports a "master profile" of experience, structured job
-            application records in Supabase, and iterative editing of AI-generated
-            drafts instead of one-shot prompts.
-          </p>
-          <ul class="proj-links">
-            <li><a href="https://github.com/ElizaZadura/match-the-job" target="_blank">Source</a></li>
-          </ul>
-        </article>
-
-        <article class="project">
-          <h3>Local LLM probe framework</h3>
-          <p class="proj-meta">Shell · Ollama · logging / analysis</p>
-          <p>
-            A small framework for running repeatable "probe" prompts against local
-            LLMs (Qwen, LLaMA, Phi, Mistral) and logging outputs as fossils for later
-            analysis. Focus on sampling behavior, drift, and response texture under
-            different scaffolds and anchors.
-          </p>
-          <ul class="proj-links">
-            <li><a href="https://github.com/ElizaZadura/llm-probes" target="_blank">Source (placeholder)</a></li>
-          </ul>
-        </article>
+        <div id="projects-list" class="project-list"></div>
       </section>
 
       <section id="experience">
@@ -148,6 +104,29 @@
         </article>
       </section>
 
+      <section id="skills">
+        <h2>Skills</h2>
+        <ul class="split-list">
+          <li><strong>Backend:</strong> Java, Spring Boot, REST APIs, JWT, PostgreSQL, Flyway</li>
+          <li><strong>Frontend:</strong> React, TypeScript, HTML, CSS, component-driven UI</li>
+          <li><strong>Infra:</strong> Docker, CI/CD basics, local dev automation</li>
+          <li><strong>AI workflows:</strong> prompt scaffolds, evaluation loops, tooling glue</li>
+          <li><strong>Collaboration:</strong> documentation-first handoffs, structured feedback</li>
+        </ul>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <article class="exp">
+          <h3>Formal training &amp; continuous learning</h3>
+          <p class="exp-meta">Details available in CV</p>
+          <p>
+            I keep formal education and certification details in my CV, along with
+            ongoing coursework and workshops.
+          </p>
+        </article>
+      </section>
+
       <section id="experiments">
         <h2>Experiments</h2>
         <p>
@@ -158,7 +137,8 @@
         </p>
         <p>
           These don't always become polished projects, but they strongly influence
-          how I write and structure production code.
+          how I write and structure production code. I will add specific experiment
+          entries here as the list solidifies.
         </p>
       </section>
 
@@ -169,8 +149,8 @@
         </p>
         <ul>
           <li>Email: <a href="mailto:eliza.zadura@gmail.com">eliza.zadura@gmail.com</a></li>
-          <li>LinkedIn: <a href="https://www.linkedin.com/in/elizazadura" target="_blank">/in/elizazadura</a></li>
-          <li>GitHub: <a href="https://github.com/ElizaZadura" target="_blank">@ElizaZadura</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/elizazadura" target="_blank" rel="noopener">/in/elizazadura</a></li>
+          <li>GitHub: <a href="https://github.com/ElizaZadura" target="_blank" rel="noopener">@ElizaZadura</a></li>
         </ul>
       </section>
     </main>
@@ -183,6 +163,59 @@
   <script>
     // Year helper
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const projects = [
+      {
+        title: "Mat-och-sovklocka (MoS)",
+        stack: "Spring Boot · Postgres · Docker · JWT · TypeScript/React",
+        description:
+          "A full-stack application for tracking routines and reminders. Includes a modular Spring Boot backend with Flyway migrations, JWT-based auth, role-based access control, and a Dockerized Postgres setup. Frontend built with React and TypeScript.",
+        links: [
+          { label: "Source", url: "https://github.com/Mat-och-sovklocka/mos" }
+        ]
+      },
+      {
+        title: "Gemini CV & Conversation Assistant",
+        stack: "React · TypeScript · Gemini API · Supabase",
+        description:
+          "A web app that helps tailor a CV and cover letter to specific job postings. Supports a master profile of experience, structured job application records in Supabase, and iterative editing of AI-generated drafts instead of one-shot prompts.",
+        links: [
+          { label: "Source", url: "https://github.com/ElizaZadura/match-the-job" }
+        ]
+      },
+      {
+        title: "Local LLM probe framework",
+        stack: "Shell · Ollama · logging / analysis",
+        description:
+          "A small framework for running repeatable probe prompts against local LLMs (Qwen, LLaMA, Phi, Mistral) and logging outputs as fossils for later analysis. Focus on sampling behavior, drift, and response texture under different scaffolds and anchors.",
+        links: [
+          { label: "Source (placeholder)", url: "https://github.com/ElizaZadura/llm-probes" }
+        ]
+      }
+    ];
+
+    const projectContainer = document.getElementById("projects-list");
+    if (projectContainer) {
+      projectContainer.innerHTML = projects
+        .map(project => {
+          const links = (project.links || [])
+            .map(
+              link =>
+                `<li><a href="${link.url}" target="_blank" rel="noopener">${link.label}</a></li>`
+            )
+            .join("");
+
+          return `
+            <article class="project">
+              <h3>${project.title}</h3>
+              <p class="proj-meta">${project.stack}</p>
+              <p>${project.description}</p>
+              ${links ? `<ul class="proj-links">${links}</ul>` : ""}
+            </article>
+          `;
+        })
+        .join("");
+    }
 
     // Theme switcher
     const themeButtons = document.querySelectorAll('.theme-btn');
