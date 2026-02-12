@@ -1,3 +1,4 @@
-/.specstory
-/.cursor
-/.vscode
+.specstory
+.cursor
+.vscode
+/docs
