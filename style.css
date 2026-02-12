@@ -21,24 +21,6 @@
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* DINKY Theme (Light with red sidebar) */
-[data-theme="dinky"] {
-  --bg: #f5f2e9;
-  --bg-alt: #ebe8df;
-  --sidebar-bg: #6d0019;
-  --content-bg: #fafaf7;
-  --fg: #333;
-  --fg-light: #fff;
-  --muted: #666;
-  --accent: #c00;
-  --accent-hover: #e00;
-  --border: #d5cfbf;
-  --sidebar-border: #5a0015;
-  --section-heading: #333;
-  --font-body: 'Merriweather', Georgia, serif;
-  --font-heading: 'Merriweather', Georgia, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
 
 /* HACKER Theme (Terminal green on black) */
 [data-theme="hacker"] {
@@ -140,9 +122,6 @@ body {
   border-radius: 4px;
 }
 
-.dinky-icon {
-  background: linear-gradient(135deg, #6d0019 50%, #f5f2e9 50%);
-}
 
 .hacker-icon {
   background: linear-gradient(135deg, #151515 50%, #b5e853 50%);
@@ -416,29 +395,6 @@ a:hover {
    THEME-SPECIFIC OVERRIDES
    ============================================ */
 
-/* DINKY Theme Specifics */
-[data-theme="dinky"] .page {
-  background: var(--bg);
-}
-
-[data-theme="dinky"] .sidebar {
-  border-radius: 0;
-}
-
-[data-theme="dinky"] .content {
-  border-left: 4px solid #c00;
-}
-
-[data-theme="dinky"] .nav a {
-  text-transform: none;
-  letter-spacing: normal;
-  font-weight: 400;
-}
-
-[data-theme="dinky"] h2 {
-  border-bottom: 2px solid #c00;
-  padding-bottom: 8px;
-}
 
 /* HACKER Theme Specifics */
 [data-theme="hacker"] .page {
@@ -523,10 +479,6 @@ a:hover {
     padding: 24px 20px;
   }
 
-  [data-theme="dinky"] .content {
-    border-left: none;
-    border-top: 4px solid #c00;
-  }
 
   [data-theme="hacker"] .sidebar {
     border-right: none;
